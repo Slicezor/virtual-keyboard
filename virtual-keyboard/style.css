@@ -46,6 +46,14 @@ table {
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
 
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
 .body{
   font-family: 'Roboto Mono', monospace;
   font-weight: 400;
@@ -125,6 +133,12 @@ table {
 
 .speсialKey:hover {
   background-color: rgb(95, 95, 95);
+}
+
+.key:active {
+  background-color: lightgreen;
+  box-shadow: 2px 2px 2px #3C93D5;
+  transform: scale(0.9);
 }
 
 .keyBackspace{

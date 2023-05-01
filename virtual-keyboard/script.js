@@ -1,6 +1,6 @@
 initHtml()
 
-const tArea = document.querySelector("textarea")
+const area = document.querySelector("textarea")
 const letters = Array.from(document.querySelectorAll("[data-letter]"))
 const specials = Array.from(document.querySelectorAll("[data-spec]"))
 
@@ -13,12 +13,32 @@ function init() {
 
 function keydownHandler(event) {
   event.preventDefault()
+  area.focus()
   
+  let key = event.key
+
   const letter = letters.find((x) => x.dataset.letter.includes(event.key))
 
   if (letter) {
     letter.classList.add("pressed")
+    area.value += event.key
     return
+  }
+
+  if (key === " ") {
+    area.value += key
+  }
+
+  if (key === "Enter") {
+    area.value += "\n"
+  }
+  
+  if (key === "Tab") {
+    area.value += "    "
+  }
+
+  if (key === "Backspace") {
+    area.value = (area.value).substring(0, (area.value).length - 1)
   }
 
   const special = specials.filter((x => x.dataset.spec === event.key))
@@ -47,6 +67,32 @@ function keyupHandler(event){
   }
 }
 
+
+document.querySelector(".keyboard").addEventListener('click', e => {
+  let content = e.target.dataset.letter
+  let spec = e.target.dataset.spec
+
+  if (content) {
+    area.value += content
+    return
+  }
+
+  if (spec === " ") {
+    area.value += spec
+  }
+
+  if (spec === "Enter") {
+    area.value += "\n"
+  }
+  
+  if (spec === "Tab") {
+    area.value += "    "
+  }
+
+  if (spec === "Backspace") {
+    area.value = (area.value).substring(0, (area.value).length - 1)
+  }
+})
 
 function initHtml() {
     let container = document.createElement('div')
@@ -184,61 +230,61 @@ function initHtml() {
 
   let keyQ = document.createElement('div')
   keyQ.className = "keyboard__key keyQ key"
-  keyQ.innerHTML = "q"
+  keyQ.innerHTML = "Q"
   keyQ.dataset.letter = "q"
   lineTwo.append(keyQ)
 
   let keyW = document.createElement('div')
   keyW.className = "keyboard__key keyW key"
-  keyW.innerHTML = "w"
+  keyW.innerHTML = "W"
   keyW.dataset.letter = "w"
   lineTwo.append(keyW)
 
   let keyE = document.createElement('div')
   keyE.className = "keyboard__key keyE key"
-  keyE.innerHTML = "e"
+  keyE.innerHTML = "E"
   keyE.dataset.letter = "e"
   lineTwo.append(keyE)
 
   let keyR = document.createElement('div')
   keyR.className = "keyboard__key keyR key"
-  keyR.innerHTML = "r"
+  keyR.innerHTML = "R"
   keyR.dataset.letter = "r"
   lineTwo.append(keyR)
 
   let keyT = document.createElement('div')
   keyT.className = "keyboard__key keyT key"
-  keyT.innerHTML = "t"
+  keyT.innerHTML = "T"
   keyT.dataset.letter = "t"
   lineTwo.append(keyT)
 
   let keyY = document.createElement('div')
   keyY.className = "keyboard__key keyY key"
-  keyY.innerHTML = "y"
+  keyY.innerHTML = "Y"
   keyY.dataset.letter = "y"
   lineTwo.append(keyY)
 
   let keyU = document.createElement('div')
   keyU.className = "keyboard__key keyU key"
-  keyU.innerHTML = "u"
+  keyU.innerHTML = "U"
   keyU.dataset.letter = "u"
   lineTwo.append(keyU)
 
   let keyI = document.createElement('div')
   keyI.className = "keyboard__key keyI key"
-  keyI.innerHTML = "i"
+  keyI.innerHTML = "I"
   keyI.dataset.letter = "i"
   lineTwo.append(keyI)
 
   let keyO = document.createElement('div')
   keyO.className = "keyboard__key keyO key"
-  keyO.innerHTML = "o"
+  keyO.innerHTML = "O"
   keyO.dataset.letter = "o"
   lineTwo.append(keyO)
 
   let keyP = document.createElement('div')
   keyP.className = "keyboard__key keyP key"
-  keyP.innerHTML = "p"
+  keyP.innerHTML = "P"
   keyP.dataset.letter = "p"
   lineTwo.append(keyP)
 
@@ -275,55 +321,55 @@ function initHtml() {
 
   let keyA = document.createElement('div')
   keyA.className = "keyboard__key keyA key"
-  keyA.innerHTML = "a"
+  keyA.innerHTML = "A"
   keyA.dataset.letter = "a"
   lineThree.append(keyA)
 
   let keyS = document.createElement('div')
   keyS.className = "keyboard__key keyS key"
-  keyS.innerHTML = "s"
+  keyS.innerHTML = "S"
   keyS.dataset.letter = "s"
   lineThree.append(keyS)
 
   let keyD = document.createElement('div')
   keyD.className = "keyboard__key keyD key"
-  keyD.innerHTML = "d"
+  keyD.innerHTML = "D"
   keyD.dataset.letter = "d"
   lineThree.append(keyD)
 
   let keyF = document.createElement('div')
   keyF.className = "keyboard__key keyF key"
-  keyF.innerHTML = "f"
+  keyF.innerHTML = "F"
   keyF.dataset.letter = "f"
   lineThree.append(keyF)
 
   let keyG = document.createElement('div')
   keyG.className = "keyboard__key keyG key"
-  keyG.innerHTML = "g"
+  keyG.innerHTML = "G"
   keyG.dataset.letter = "g"
   lineThree.append(keyG)
 
   let keyH = document.createElement('div')
   keyH.className = "keyboard__key keyH key"
-  keyH.innerHTML = "h"
+  keyH.innerHTML = "H"
   keyH.dataset.letter = "h"
   lineThree.append(keyH)
 
   let keyJ = document.createElement('div')
   keyJ.className = "keyboard__key keyJ key"
-  keyJ.innerHTML = "j"
+  keyJ.innerHTML = "J"
   keyJ.dataset.letter = "j"
   lineThree.append(keyJ)
 
   let keyK = document.createElement('div')
   keyK.className = "keyboard__key keyK key"
-  keyK.innerHTML = "k"
+  keyK.innerHTML = "K"
   keyK.dataset.letter = "k"
   lineThree.append(keyK)
 
   let keyL = document.createElement('div')
   keyL.className = "keyboard__key keyL key"
-  keyL.innerHTML = "l"
+  keyL.innerHTML = "L"
   keyL.dataset.letter = "l"
   lineThree.append(keyL)
 
@@ -354,49 +400,49 @@ function initHtml() {
 
   let keyZ = document.createElement('div')
   keyZ.className = "keyboard__key keyZ key"
-  keyZ.innerHTML = "z"
+  keyZ.innerHTML = "Z"
   keyZ.dataset.letter = "z"
   lineFour.append(keyZ)
 
   let keyX = document.createElement('div')
   keyX.className = "keyboard__key keyB key"
-  keyX.innerHTML = "b"
+  keyX.innerHTML = "B"
   keyX.dataset.letter = "b"
   lineFour.append(keyX)
 
   let keyX2 = document.createElement('div')
   keyX2.className = "keyboard__key keyX key"
-  keyX2.innerHTML = "x"
+  keyX2.innerHTML = "X"
   keyX2.dataset.letter = "x"
   lineFour.append(keyX2)
 
   let keyC = document.createElement('div')
   keyC.className = "keyboard__key keyC key"
-  keyC.innerHTML = "c"
+  keyC.innerHTML = "C"
   keyC.dataset.letter = "c"
   lineFour.append(keyC)
 
   let keyV = document.createElement('div')
   keyV.className = "keyboard__key keyV key"
-  keyV.innerHTML = "v"
+  keyV.innerHTML = "V"
   keyV.dataset.letter = "v"
   lineFour.append(keyV)
 
   let keyB = document.createElement('div')
   keyB.className = "keyboard__key keyB key"
-  keyB.innerHTML = "b"
+  keyB.innerHTML = "B"
   keyB.dataset.letter = "b"
   lineFour.append(keyX)
 
   let keyN = document.createElement('div')
   keyN.className = "keyboard__key keyN key"
-  keyN.innerHTML = "n"
+  keyN.innerHTML = "N"
   keyN.dataset.letter = "n"
   lineFour.append(keyN)
 
   let keyM = document.createElement('div')
   keyM.className = "keyboard__key keyM key"
-  keyM.innerHTML = "m"
+  keyM.innerHTML = "M"
   keyM.dataset.letter = "m"
   lineFour.append(keyM)
 
@@ -491,5 +537,3 @@ function initHtml() {
   info.innerHTML = "Keyboard is recommended for use with Windows <br><br> To switch the input language use: left alt + shift"
   container.append(info)
 }
-
-
