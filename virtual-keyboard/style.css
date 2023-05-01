@@ -1,0 +1,197 @@
+/* Обнуление стилей */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* ___________________________ */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.body{
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+  font-size: 18px;
+  background-color: rgba(173, 216, 230, 0.655);
+}
+
+.container{
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.container > :not(:last-child){
+  margin-bottom: 20px;
+}
+
+.title{
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.text-area{
+  display: block;
+  padding: 10px;
+  border: black solid 1px;
+  max-width: calc(600px - 24px);
+  height: 200px;
+  margin: 0 auto;
+  font-size: 20px;
+  background-color: lightgray;
+}
+
+.keyboard{
+  position: relative;
+  padding: 10px;
+  margin: 0 auto;
+  border: black solid 2px;
+  width: calc(838px - 24px);
+  border-radius: 4px;
+  background-color: rgb(19, 28, 45);
+
+  box-shadow: 8px 8px 0px 2px #0e456f;
+}
+
+.line::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.key {
+  float: left;
+  background-color: lightgrey;
+  width: 40px;
+  height: 40px;
+  border: black solid 1px;
+  border-radius: 4px;
+  margin: 3px;
+  padding: 2px;  
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+}
+
+.key:hover {
+  background-color: rgb(173, 173, 173);
+}
+
+.speсialKey{
+  background-color: grey;
+  font-weight: 700;
+  font-size: 15px;
+  transition: all 0.2s ease 0s;
+}
+
+.speсialKey:hover {
+  background-color: rgb(95, 95, 95);
+}
+
+.key:active {
+  background-color: lightgreen;
+  box-shadow: 2px 2px 2px #3C93D5;
+  transform: scale(0.9);
+}
+
+.keyBackspace{
+  width: 131px;
+}
+
+.keyTab{
+  width: 64px;
+}
+
+.keyCaps{
+  width: 80px;
+}
+
+.keyShiftLeft {
+  width: 100px;
+}
+
+.keyShiftRight {
+  width: 121px;
+}
+
+.keyDel {
+  width: 55px;
+}
+
+.keyEnter{
+  width: 141px;
+}
+
+.keySpace {
+  width: 295px;
+}
+
+.keyAltLeft, .keyAltRight {
+  width: 64px;
+}
+
+.keyCtrlLeft {
+  width: 53px;
+}
+
+.keyCtrlRight {
+  width: 70px;
+}
+
+.info{
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.pressed {
+  background-color: lightgreen;
+  box-shadow: 2px 2px 2px #3C93D5;
+  transform: scale(0.9);
+}
