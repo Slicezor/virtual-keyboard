@@ -1,22 +1,51 @@
 initHtml()
 
 const tArea = document.querySelector("textarea")
+const letters = Array.from(document.querySelectorAll("[data-letter]"))
+const specials = Array.from(document.querySelectorAll("[data-spec]"))
 
 init();
 
 function init() {
   document.addEventListener("keydown", keydownHandler)
-  // document.addEventListener("keyup", keyupHandler)
+  document.addEventListener("keyup", keyupHandler)
 }
 
 function keydownHandler(event) {
   event.preventDefault()
-  console.log(event.key)
-  console.log("keydownHandler", event)
+  
+  const letter = letters.find((x) => x.dataset.letter.includes(event.key))
+
+  if (letter) {
+    letter.classList.add("pressed")
+    return
+  }
+
+  const special = specials.filter((x => x.dataset.spec === event.key))
+
+  if (special.length) {
+    special.forEach((spec) => spec.classList.add("pressed"))
+    return
+  }
 }
-// function keyupHandler(event){
-//   console.log("keyupHandler", event)
-// }
+
+function keyupHandler(event){
+  event.preventDefault()
+  
+  const letter = letters.find((x) => x.dataset.letter.includes(event.key))
+
+  if (letter) {
+    letter.classList.remove("pressed")
+    return
+  }
+
+  const special = specials.filter((x => x.dataset.spec === event.key))
+
+  if (special.length) {
+    special.forEach((spec) => spec.classList.remove("pressed"))
+    return
+  }
+}
 
 
 function initHtml() {
@@ -131,7 +160,7 @@ function initHtml() {
   let keyMinus = document.createElement('div')
   keyMinus.className = "keyboard__key keyMinus key"
   keyMinus.innerHTML = "-"
-  keyMinus.dataset.letter = "="
+  keyMinus.dataset.letter = "-"
   lineOne.append(keyMinus)
 
   let keyEquals = document.createElement('div')
@@ -143,14 +172,14 @@ function initHtml() {
   let keyBackspace = document.createElement('div')
   keyBackspace.className = "keyboard__key keyBackspace key speсialKey"
   keyBackspace.innerHTML = "Backspace"
-  keyBackspace.dataset.letter = "Backspace"
+  keyBackspace.dataset.spec = "Backspace"
   lineOne.append(keyBackspace)
 
   //Line two
   let keyTab = document.createElement('div')
   keyTab.className = "keyboard__key keyTab key speсialKey"
   keyTab.innerHTML = "Tab"
-  keyTab.dataset.letter = "Tab"
+  keyTab.dataset.spec = "Tab"
   lineTwo.append(keyTab)
 
   let keyQ = document.createElement('div')
@@ -234,14 +263,14 @@ function initHtml() {
   let keyDel = document.createElement('div')
   keyDel.className = "keyboard__key keyDel key speсialKey"
   keyDel.innerHTML = "Del"
-  keyDel.dataset.letter = "Delete"
+  keyDel.dataset.spec = "Delete"
   lineTwo.append(keyDel)
 
   //Line three
   let keyCaps = document.createElement('div')
   keyCaps.className = "keyboard__key keyCaps key speсialKey"
   keyCaps.innerHTML = "CapsLock"
-  keyCaps.dataset.letter = "CapsLock"
+  keyCaps.dataset.spec = "CapsLock"
   lineThree.append(keyCaps)
 
   let keyA = document.createElement('div')
@@ -313,14 +342,14 @@ function initHtml() {
   let keyEnter = document.createElement('div')
   keyEnter.className = "keyboard__key keyEnter key speсialKey"
   keyEnter.innerHTML = "Enter"
-  keyEnter.dataset.letter = "Enter"
+  keyEnter.dataset.spec = "Enter"
   lineThree.append(keyEnter)
 
   //Line four
   let keyShiftLeft = document.createElement('div')
   keyShiftLeft.className = "keyboard__key keyShiftLeft key speсialKey"
   keyShiftLeft.innerHTML = "Shift"
-  keyShiftLeft.dataset.letter = "Shift"
+  keyShiftLeft.dataset.spec = "Shift"
   lineFour.append(keyShiftLeft)
 
   let keyZ = document.createElement('div')
@@ -330,10 +359,16 @@ function initHtml() {
   lineFour.append(keyZ)
 
   let keyX = document.createElement('div')
-  keyX.className = "keyboard__key keyX key"
-  keyX.innerHTML = "x"
-  keyX.dataset.letter = "x"
+  keyX.className = "keyboard__key keyB key"
+  keyX.innerHTML = "b"
+  keyX.dataset.letter = "b"
   lineFour.append(keyX)
+
+  let keyX2 = document.createElement('div')
+  keyX2.className = "keyboard__key keyX key"
+  keyX2.innerHTML = "x"
+  keyX2.dataset.letter = "x"
+  lineFour.append(keyX2)
 
   let keyC = document.createElement('div')
   keyC.className = "keyboard__key keyC key"
@@ -386,68 +421,68 @@ function initHtml() {
   let keyArrowUp = document.createElement('div')
   keyArrowUp.className = "keyboard__key keyArrowUp key speсialKey"
   keyArrowUp.innerHTML = "▲"
-  keyArrowUp.dataset.letter = "ArrowUp"
+  keyArrowUp.dataset.spec = "ArrowUp"
   lineFour.append(keyArrowUp)
 
   let keyShiftRight = document.createElement('div')
   keyShiftRight.className = "keyboard__key keyShiftRight key speсialKey"
   keyShiftRight.innerHTML = "Shift"
-  keyShiftRight.dataset.letter = "Shift"
+  keyShiftRight.dataset.spec = "Shift"
   lineFour.append(keyShiftRight)
 
   //Line Five
   let keyCtrlLeft = document.createElement('div')
   keyCtrlLeft.className = "keyboard__key keyCtrlLeft key speсialKey"
   keyCtrlLeft.innerHTML = "Ctrl"
-  keyCtrlLeft.dataset.letter = "Control"
+  keyCtrlLeft.dataset.spec = "Control"
   lineFive.append(keyCtrlLeft)
 
   let keyWin = document.createElement('div')
   keyWin.className = "keyboard__key keyWin key speсialKey"
   keyWin.innerHTML = "Win"
-  keyWin.dataset.letter = "Meta"
+  keyWin.dataset.spec = "Meta"
   lineFive.append(keyWin)
 
   let keyAltLeft = document.createElement('div')
   keyAltLeft.className = "keyboard__key keyAltLeft key speсialKey"
   keyAltLeft.innerHTML = "Alt"
-  keyAltLeft.dataset.letter = "Alt"
+  keyAltLeft.dataset.spec = "Alt"
   lineFive.append(keyAltLeft)
 
   let keySpace = document.createElement('div')
   keySpace.className = "keyboard__key keySpace key speсialKey"
   keySpace.innerHTML = "Space"
-  keySpace.dataset.letter = " "
+  keySpace.dataset.spec = " "
   lineFive.append(keySpace)
 
   let keyAltRight = document.createElement('div')
   keyAltRight.className = "keyboard__key keyAltRight key speсialKey"
   keyAltRight.innerHTML = "Alt"
-  keyAltRight.dataset.letter = "Alt"
+  keyAltRight.dataset.spec = "Alt"
   lineFive.append(keyAltRight)
 
   let keyArrowLeft = document.createElement('div')
   keyArrowLeft.className = "keyboard__key keyArrowLeft key speсialKey"
   keyArrowLeft.innerHTML = "◀"
-  keyArrowLeft.dataset.letter = "ArrowLeft"
+  keyArrowLeft.dataset.spec = "ArrowLeft"
   lineFive.append(keyArrowLeft)
 
   let keyArrowDown = document.createElement('div')
   keyArrowDown.className = "keyboard__key keyArrowDown key speсialKey"
   keyArrowDown.innerHTML = "▼"
-  keyArrowDown.dataset.letter = "ArrowDown"
+  keyArrowDown.dataset.spec = "ArrowDown"
   lineFive.append(keyArrowDown)
 
   let keyArrowRight = document.createElement('div')
   keyArrowRight.className = "keyboard__key keyArrowRight key speсialKey"
   keyArrowRight.innerHTML = "▶"
-  keyArrowRight.dataset.letter = "ArrowRight"
+  keyArrowRight.dataset.spec = "ArrowRight"
   lineFive.append(keyArrowRight)
 
   let keyCtrlRight = document.createElement('div')
   keyCtrlRight.className = "keyboard__key keyCtrlRight key speсialKey"
   keyCtrlRight.innerHTML = "Ctrl"
-  keyCtrlRight.dataset.letter = "Control"
+  keyCtrlRight.dataset.spec = "Control"
   lineFive.append(keyCtrlRight)
 
   //Info

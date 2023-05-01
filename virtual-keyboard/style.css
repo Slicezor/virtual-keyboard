@@ -84,9 +84,11 @@ table {
   padding: 10px;
   margin: 0 auto;
   border: black solid 2px;
-  width: calc(809px - 24px);
+  width: calc(838px - 24px);
   border-radius: 4px;
   background-color: rgb(19, 28, 45);
+
+  box-shadow: 8px 8px 0px 2px #0e456f;
 }
 
 .line::after {
@@ -107,6 +109,7 @@ table {
   text-align: center;
   line-height: 40px;
   cursor: pointer;
+  transition: all 0.2s ease 0s;
 }
 
 .key:hover {
@@ -117,6 +120,7 @@ table {
   background-color: grey;
   font-weight: 700;
   font-size: 15px;
+  transition: all 0.2s ease 0s;
 }
 
 .speсialKey:hover {
@@ -124,23 +128,31 @@ table {
 }
 
 .keyBackspace{
-  width: 102px;
+  width: 131px;
 }
 
 .keyTab{
-  width: 50px;
+  width: 64px;
 }
 
 .keyCaps{
   width: 80px;
 }
 
-.keyShiftLeft, .keyShiftRight {
-  width: 122px;
+.keyShiftLeft {
+  width: 100px;
+}
+
+.keyShiftRight {
+  width: 121px;
+}
+
+.keyDel {
+  width: 55px;
 }
 
 .keyEnter{
-  width: 113px;
+  width: 141px;
 }
 
 .keySpace {
@@ -148,7 +160,7 @@ table {
 }
 
 .keyAltLeft, .keyAltRight {
-  width: 50px;
+  width: 64px;
 }
 
 .keyCtrlLeft {
@@ -162,4 +174,10 @@ table {
 .info{
   text-align: center;
   margin-bottom: 50px;
+}
+
+.pressed {
+  background-color: lightgreen;
+  box-shadow: 2px 2px 2px #3C93D5;
+  transform: scale(0.9);
 }
